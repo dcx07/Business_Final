@@ -11,7 +11,7 @@
     <Grid Padding="24" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="12">
         <StackPanel>
             <TextBlock Text="FocusFlow" FontSize="32" FontWeight="SemiBold" />
-            <TextBlock Text="任务管理 + 番茄钟（WinUI 3 版）" Opacity="0.75" />
+            <TextBlock Text="任务管理 + 番茄钟" Opacity="0.75" />
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="8">

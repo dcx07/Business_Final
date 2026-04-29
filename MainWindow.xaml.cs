@@ -1,9 +1,11 @@
 using System.Collections.ObjectModel;
 using System.Text.Json;
-using Microsoft.UI.Text;
+using System.Text.Json.Serialization;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Windows.Storage;
+using Windows.UI.Text;
+using System.IO;
 
 namespace BusinessFinal;
 
@@ -130,9 +132,14 @@ public sealed partial class MainWindow : Window
 
     private async Task SaveTasksAsync()
     {
-        var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(StorageFile, CreationCollisionOption.ReplaceExisting);
+        var basePath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "BusinessFinal");
+        Directory.CreateDirectory(basePath);
+
+        var filePath = Path.Combine(basePath, StorageFile);
         var json = JsonSerializer.Serialize(Tasks);
-        await FileIO.WriteTextAsync(file, json);
+        await File.WriteAllTextAsync(filePath, json);
     }
 }
 
@@ -141,5 +148,7 @@ public class TaskItem
     public string Id { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public bool IsDone { get; set; }
+
+    [JsonIgnore]
     public TextDecorations Decoration => IsDone ? TextDecorations.Strikethrough : TextDecorations.None;
 }
