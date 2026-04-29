@@ -130,8 +130,8 @@
                                 <Border Margin="0,4" MinWidth="0" Padding="12" CornerRadius="4" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
                                     <Grid ColumnSpacing="8" RowSpacing="8" ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto">
                                         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Bind Title}" TextWrapping="WrapWholeWords" TextDecorations="{x:Bind Decoration}" VerticalAlignment="Center" MaxLines="3" />
-                                        <Button Grid.Row="1" Grid.Column="1" Content="完成/撤销" Tag="{x:Bind Id}" Click="ToggleTask_Click" HorizontalAlignment="Stretch" Padding="12,0" MinHeight="32" CornerRadius="4" />
-                                        <Button Grid.Row="1" Grid.Column="2" Content="删除" Tag="{x:Bind Id}" Click="DeleteTask_Click" HorizontalAlignment="Stretch" Padding="12,0" MinHeight="32" CornerRadius="4" />
+                                        <Button Grid.Row="1" Grid.Column="1" Content="完成/撤销" Tag="{x:Bind Id}" Click="ToggleTask_Click" HorizontalAlignment="Stretch" Padding="12,4" MinHeight="32" CornerRadius="4" VerticalContentAlignment="Center" />
+                                        <Button Grid.Row="1" Grid.Column="2" Content="删除" Tag="{x:Bind Id}" Click="DeleteTask_Click" HorizontalAlignment="Stretch" Padding="12,4" MinHeight="32" CornerRadius="4" VerticalContentAlignment="Center" />
                                     </Grid>
                                 </Border>
                             </DataTemplate>
