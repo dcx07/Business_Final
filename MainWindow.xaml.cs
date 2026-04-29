@@ -6,6 +6,8 @@ using Microsoft.UI.Xaml.Controls;
 using Windows.Storage;
 using Windows.UI.Text;
 using System.IO;
+using Microsoft.UI.Windowing;
+using Windows.Graphics;
 
 namespace BusinessFinal;
 
@@ -13,6 +15,8 @@ public sealed partial class MainWindow : Window
 {
     private const int WorkSeconds = 25 * 60;
     private const string StorageFile = "tasks.json";
+    private const int MinWindowWidth = 720;
+    private const int MinWindowHeight = 560;
 
     private readonly DispatcherTimer _timer = new() { Interval = TimeSpan.FromSeconds(1) };
     private int _remainingSeconds = WorkSeconds;
@@ -27,6 +31,21 @@ public sealed partial class MainWindow : Window
         _timer.Tick += Timer_Tick;
         _ = LoadTasksAsync();
         RenderTimer();
+        SizeChanged += MainWindow_SizeChanged;
+    }
+
+    private void MainWindow_SizeChanged(object sender, WindowSizeChangedEventArgs args)
+    {
+        if (AppWindow is null) return;
+
+        var width = args.Size.Width;
+        var height = args.Size.Height;
+        if (width < MinWindowWidth || height < MinWindowHeight)
+        {
+            AppWindow.Resize(new SizeInt32(
+                Math.Max(MinWindowWidth, (int)width),
+                Math.Max(MinWindowHeight, (int)height)));
+        }
     }
 
 
