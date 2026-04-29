@@ -6,7 +6,6 @@ using Microsoft.UI.Xaml.Controls;
 using Windows.Storage;
 using Windows.UI.Text;
 using System.IO;
-using Windows.Graphics;
 
 namespace BusinessFinal;
 
@@ -14,12 +13,9 @@ public sealed partial class MainWindow : Window
 {
     private const int WorkSeconds = 25 * 60;
     private const string StorageFile = "tasks.json";
-    private const int MinWindowWidth = 980;
-    private const int MinWindowHeight = 720;
 
     private readonly DispatcherTimer _timer = new() { Interval = TimeSpan.FromSeconds(1) };
     private int _remainingSeconds = WorkSeconds;
-    private bool _isEnforcingMinSize;
 
     public ObservableCollection<TaskItem> Tasks { get; } = [];
 
@@ -29,37 +25,10 @@ public sealed partial class MainWindow : Window
         TaskListView.ItemsSource = Tasks;
 
         _timer.Tick += Timer_Tick;
-        SizeChanged += MainWindow_SizeChanged;
         _ = LoadTasksAsync();
         RenderTimer();
     }
 
-
-    private void MainWindow_SizeChanged(object sender, WindowSizeChangedEventArgs args)
-    {
-        if (_isEnforcingMinSize)
-        {
-            return;
-        }
-
-        var width = (int)args.Size.Width;
-        var height = (int)args.Size.Height;
-
-        if (width >= MinWindowWidth && height >= MinWindowHeight)
-        {
-            return;
-        }
-
-        _isEnforcingMinSize = true;
-        try
-        {
-            AppWindow.Resize(new SizeInt32(Math.Max(width, MinWindowWidth), Math.Max(height, MinWindowHeight)));
-        }
-        finally
-        {
-            _isEnforcingMinSize = false;
-        }
-    }
 
     private async void AddTask_Click(object sender, RoutedEventArgs e)
     {
