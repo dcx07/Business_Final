@@ -8,8 +8,7 @@
     mc:Ignorable="d"
     Title="FocusFlow WinUI 3">
 
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <Grid x:Name="RootGrid" MinWidth="760" Padding="24" RowDefinitions="Auto,Auto,*" RowSpacing="14" HorizontalAlignment="Stretch">
+    <Grid x:Name="RootGrid" Padding="24" RowDefinitions="Auto,Auto,*" RowSpacing="14" HorizontalAlignment="Stretch">
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="WindowWidthStates">
                     <VisualState x:Name="Compact">
@@ -105,12 +104,12 @@
                 <Button x:Name="AddTaskButton" Grid.Column="1" Grid.Row="0" Content="添加" Click="AddTask_Click" MinHeight="38" Padding="16,0" HorizontalAlignment="Stretch" />
             </Grid>
 
-            <Grid x:Name="MainRegionGrid" Grid.Row="2" ColumnDefinitions="2*,*" RowDefinitions="*" ColumnSpacing="14" RowSpacing="14">
+            <Grid x:Name="MainRegionGrid" Grid.Row="2" ColumnDefinitions="3*,2*" RowDefinitions="*" ColumnSpacing="14" RowSpacing="14">
                 <Border Grid.Row="0" Grid.Column="0" CornerRadius="12" Padding="8" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
-                    <ListView x:Name="TaskListView" MinHeight="240">
+                    <ListView x:Name="TaskListView" MinHeight="240" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local:TaskItem">
-                                <Border Margin="0,4" Padding="10" CornerRadius="10" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                                <Border Margin="0,4" MinWidth="560" Padding="10" CornerRadius="10" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
                                     <Grid ColumnSpacing="8" RowSpacing="6" ColumnDefinitions="*,Auto,Auto" RowDefinitions="Auto,Auto">
                                         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Bind Title}" TextWrapping="WrapWholeWords" TextDecorations="{x:Bind Decoration}" VerticalAlignment="Center" MaxLines="3" />
                                         <Button Grid.Row="1" Grid.Column="1" Content="完成/撤销" Tag="{x:Bind Id}" Click="ToggleTask_Click" MinWidth="76" />
@@ -122,7 +121,7 @@
                     </ListView>
                 </Border>
 
-                <Border x:Name="TimerPanel" Grid.Row="0" Grid.Column="1" CornerRadius="12" Padding="16" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                <Border x:Name="TimerPanel" Grid.Row="0" Grid.Column="1" MinWidth="300" CornerRadius="12" Padding="16" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                     <StackPanel Spacing="12" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                         <TextBlock Text="番茄钟" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Center" />
                         <TextBlock x:Name="TimerText" Text="25:00" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="NoWrap" />
@@ -134,6 +133,5 @@
                     </StackPanel>
                 </Border>
             </Grid>
-        </Grid>
-    </ScrollViewer>
+    </Grid>
 </Window>
