@@ -9,7 +9,7 @@
     Title="FocusFlow WinUI 3">
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-        <Grid x:Name="RootGrid" MaxWidth="1200" Padding="24" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="14" HorizontalAlignment="Center">
+        <Grid x:Name="RootGrid" Padding="24" RowDefinitions="Auto,Auto,*" RowSpacing="14" HorizontalAlignment="Stretch">
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="WindowWidthStates">
                     <VisualState x:Name="Compact">
@@ -36,44 +36,44 @@
 
                     <VisualState x:Name="Medium">
                         <VisualState.StateTriggers>
-                            <AdaptiveTrigger MinWindowWidth="560" />
+                            <AdaptiveTrigger MinWindowWidth="700" />
                         </VisualState.StateTriggers>
                         <VisualState.Setters>
                             <Setter Target="RootGrid.Padding" Value="18" />
                             <Setter Target="AppTitle.FontSize" Value="30" />
-                            <Setter Target="InputGrid.ColumnDefinitions" Value="*,Auto" />
-                            <Setter Target="InputGrid.RowDefinitions" Value="Auto" />
+                            <Setter Target="InputGrid.ColumnDefinitions" Value="*" />
+                            <Setter Target="InputGrid.RowDefinitions" Value="Auto,Auto" />
                             <Setter Target="TaskInput.(Grid.Row)" Value="0" />
                             <Setter Target="TaskInput.(Grid.Column)" Value="0" />
-                            <Setter Target="TaskInput.MinWidth" Value="180" />
-                            <Setter Target="AddTaskButton.(Grid.Row)" Value="0" />
-                            <Setter Target="AddTaskButton.(Grid.Column)" Value="1" />
-                            <Setter Target="AddTaskButton.HorizontalAlignment" Value="Left" />
+                            <Setter Target="TaskInput.MinWidth" Value="0" />
+                            <Setter Target="AddTaskButton.(Grid.Row)" Value="1" />
+                            <Setter Target="AddTaskButton.(Grid.Column)" Value="0" />
+                            <Setter Target="AddTaskButton.HorizontalAlignment" Value="Stretch" />
                             <Setter Target="MainRegionGrid.ColumnDefinitions" Value="*" />
                             <Setter Target="MainRegionGrid.RowDefinitions" Value="*,Auto" />
                             <Setter Target="TaskListView.(Grid.Row)" Value="0" />
                             <Setter Target="TaskListView.(Grid.Column)" Value="0" />
                             <Setter Target="TimerPanel.(Grid.Row)" Value="1" />
                             <Setter Target="TimerPanel.(Grid.Column)" Value="0" />
-                            <Setter Target="TimerText.FontSize" Value="46" />
+                            <Setter Target="TimerText.FontSize" Value="44" />
                         </VisualState.Setters>
                     </VisualState>
 
                     <VisualState x:Name="Wide">
                         <VisualState.StateTriggers>
-                            <AdaptiveTrigger MinWindowWidth="900" />
+                            <AdaptiveTrigger MinWindowWidth="1200" />
                         </VisualState.StateTriggers>
                         <VisualState.Setters>
                             <Setter Target="RootGrid.Padding" Value="24" />
                             <Setter Target="AppTitle.FontSize" Value="32" />
-                            <Setter Target="InputGrid.ColumnDefinitions" Value="*,Auto" />
-                            <Setter Target="InputGrid.RowDefinitions" Value="Auto" />
+                            <Setter Target="InputGrid.ColumnDefinitions" Value="*" />
+                            <Setter Target="InputGrid.RowDefinitions" Value="Auto,Auto" />
                             <Setter Target="TaskInput.(Grid.Row)" Value="0" />
                             <Setter Target="TaskInput.(Grid.Column)" Value="0" />
                             <Setter Target="TaskInput.MinWidth" Value="260" />
-                            <Setter Target="AddTaskButton.(Grid.Row)" Value="0" />
-                            <Setter Target="AddTaskButton.(Grid.Column)" Value="1" />
-                            <Setter Target="AddTaskButton.HorizontalAlignment" Value="Left" />
+                            <Setter Target="AddTaskButton.(Grid.Row)" Value="1" />
+                            <Setter Target="AddTaskButton.(Grid.Column)" Value="0" />
+                            <Setter Target="AddTaskButton.HorizontalAlignment" Value="Stretch" />
                             <Setter Target="MainRegionGrid.ColumnDefinitions" Value="2*,*" />
                             <Setter Target="MainRegionGrid.RowDefinitions" Value="*" />
                             <Setter Target="TaskListView.(Grid.Row)" Value="0" />
