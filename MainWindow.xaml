@@ -8,75 +8,123 @@
     mc:Ignorable="d"
     Title="FocusFlow WinUI 3">
 
-    <Grid x:Name="RootGrid" Padding="24" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="12">
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="WindowWidthStates">
-                <VisualState x:Name="Narrow">
-                    <VisualState.Setters>
-                        <Setter Target="InputGrid.ColumnDefinitions" Value="*" />
-                        <Setter Target="InputGrid.RowDefinitions" Value="Auto,Auto" />
-                        <Setter Target="TaskInput.(Grid.Row)" Value="0" />
-                        <Setter Target="TaskInput.(Grid.Column)" Value="0" />
-                        <Setter Target="AddTaskButton.(Grid.Row)" Value="1" />
-                        <Setter Target="AddTaskButton.(Grid.Column)" Value="0" />
-                        <Setter Target="MainRegionGrid.ColumnDefinitions" Value="*" />
-                        <Setter Target="MainRegionGrid.RowDefinitions" Value="*,Auto" />
-                        <Setter Target="TimerPanel.(Grid.Row)" Value="1" />
-                        <Setter Target="TimerPanel.(Grid.Column)" Value="0" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Wide">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="720" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="InputGrid.ColumnDefinitions" Value="*,Auto" />
-                        <Setter Target="InputGrid.RowDefinitions" Value="Auto" />
-                        <Setter Target="TaskInput.(Grid.Row)" Value="0" />
-                        <Setter Target="TaskInput.(Grid.Column)" Value="0" />
-                        <Setter Target="AddTaskButton.(Grid.Row)" Value="0" />
-                        <Setter Target="AddTaskButton.(Grid.Column)" Value="1" />
-                        <Setter Target="MainRegionGrid.ColumnDefinitions" Value="2*,*" />
-                        <Setter Target="MainRegionGrid.RowDefinitions" Value="*" />
-                        <Setter Target="TimerPanel.(Grid.Row)" Value="0" />
-                        <Setter Target="TimerPanel.(Grid.Column)" Value="1" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid x:Name="RootGrid" MaxWidth="1200" Padding="24" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="14" HorizontalAlignment="Center">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="WindowWidthStates">
+                    <VisualState x:Name="Compact">
+                        <VisualState.Setters>
+                            <Setter Target="RootGrid.Padding" Value="12" />
+                            <Setter Target="AppTitle.FontSize" Value="26" />
+                            <Setter Target="InputGrid.ColumnDefinitions" Value="*" />
+                            <Setter Target="InputGrid.RowDefinitions" Value="Auto,Auto" />
+                            <Setter Target="TaskInput.(Grid.Row)" Value="0" />
+                            <Setter Target="TaskInput.(Grid.Column)" Value="0" />
+                            <Setter Target="TaskInput.MinWidth" Value="0" />
+                            <Setter Target="AddTaskButton.(Grid.Row)" Value="1" />
+                            <Setter Target="AddTaskButton.(Grid.Column)" Value="0" />
+                            <Setter Target="AddTaskButton.HorizontalAlignment" Value="Stretch" />
+                            <Setter Target="MainRegionGrid.ColumnDefinitions" Value="*" />
+                            <Setter Target="MainRegionGrid.RowDefinitions" Value="Auto,Auto" />
+                            <Setter Target="TaskListView.(Grid.Row)" Value="0" />
+                            <Setter Target="TaskListView.(Grid.Column)" Value="0" />
+                            <Setter Target="TimerPanel.(Grid.Row)" Value="1" />
+                            <Setter Target="TimerPanel.(Grid.Column)" Value="0" />
+                            <Setter Target="TimerText.FontSize" Value="42" />
+                        </VisualState.Setters>
+                    </VisualState>
 
-        <StackPanel>
-            <TextBlock Text="FocusFlow" FontSize="32" FontWeight="SemiBold" />
-            <TextBlock Text="任务管理 + 番茄钟" Opacity="0.75" />
-        </StackPanel>
+                    <VisualState x:Name="Medium">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="560" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="RootGrid.Padding" Value="18" />
+                            <Setter Target="AppTitle.FontSize" Value="30" />
+                            <Setter Target="InputGrid.ColumnDefinitions" Value="*,Auto" />
+                            <Setter Target="InputGrid.RowDefinitions" Value="Auto" />
+                            <Setter Target="TaskInput.(Grid.Row)" Value="0" />
+                            <Setter Target="TaskInput.(Grid.Column)" Value="0" />
+                            <Setter Target="TaskInput.MinWidth" Value="180" />
+                            <Setter Target="AddTaskButton.(Grid.Row)" Value="0" />
+                            <Setter Target="AddTaskButton.(Grid.Column)" Value="1" />
+                            <Setter Target="AddTaskButton.HorizontalAlignment" Value="Left" />
+                            <Setter Target="MainRegionGrid.ColumnDefinitions" Value="*" />
+                            <Setter Target="MainRegionGrid.RowDefinitions" Value="*,Auto" />
+                            <Setter Target="TaskListView.(Grid.Row)" Value="0" />
+                            <Setter Target="TaskListView.(Grid.Column)" Value="0" />
+                            <Setter Target="TimerPanel.(Grid.Row)" Value="1" />
+                            <Setter Target="TimerPanel.(Grid.Column)" Value="0" />
+                            <Setter Target="TimerText.FontSize" Value="46" />
+                        </VisualState.Setters>
+                    </VisualState>
 
-        <Grid x:Name="InputGrid" Grid.Row="1" ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="8" RowSpacing="8">
-            <TextBox x:Name="TaskInput" Grid.Column="0" Grid.Row="0" MinWidth="220" PlaceholderText="输入任务，例如：完成项目文档" HorizontalAlignment="Stretch" />
-            <Button x:Name="AddTaskButton" Grid.Column="1" Grid.Row="0" Content="添加" Click="AddTask_Click" />
-        </Grid>
+                    <VisualState x:Name="Wide">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="900" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="RootGrid.Padding" Value="24" />
+                            <Setter Target="AppTitle.FontSize" Value="32" />
+                            <Setter Target="InputGrid.ColumnDefinitions" Value="*,Auto" />
+                            <Setter Target="InputGrid.RowDefinitions" Value="Auto" />
+                            <Setter Target="TaskInput.(Grid.Row)" Value="0" />
+                            <Setter Target="TaskInput.(Grid.Column)" Value="0" />
+                            <Setter Target="TaskInput.MinWidth" Value="260" />
+                            <Setter Target="AddTaskButton.(Grid.Row)" Value="0" />
+                            <Setter Target="AddTaskButton.(Grid.Column)" Value="1" />
+                            <Setter Target="AddTaskButton.HorizontalAlignment" Value="Left" />
+                            <Setter Target="MainRegionGrid.ColumnDefinitions" Value="2*,*" />
+                            <Setter Target="MainRegionGrid.RowDefinitions" Value="*" />
+                            <Setter Target="TaskListView.(Grid.Row)" Value="0" />
+                            <Setter Target="TaskListView.(Grid.Column)" Value="0" />
+                            <Setter Target="TimerPanel.(Grid.Row)" Value="0" />
+                            <Setter Target="TimerPanel.(Grid.Column)" Value="1" />
+                            <Setter Target="TimerText.FontSize" Value="50" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
 
-        <Grid x:Name="MainRegionGrid" Grid.Row="2" ColumnDefinitions="2*,*" RowDefinitions="*" ColumnSpacing="12" RowSpacing="12">
-            <ListView x:Name="TaskListView">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="local:TaskItem">
-                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8" Padding="8">
-                            <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextDecorations="{x:Bind Decoration}" VerticalAlignment="Center" />
-                            <Button Grid.Column="1" Content="完成/撤销" Tag="{x:Bind Id}" Click="ToggleTask_Click" />
-                            <Button Grid.Column="2" Content="删除" Tag="{x:Bind Id}" Click="DeleteTask_Click" />
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-            <StackPanel x:Name="TimerPanel" Grid.Column="1" Spacing="10" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                <TextBlock Text="番茄钟" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Center" />
-                <TextBlock x:Name="TimerText" Text="25:00" FontSize="48" FontWeight="Bold" HorizontalAlignment="Center" />
-                <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
-                    <Button Content="开始" Click="Start_Click" />
-                    <Button Content="暂停" Click="Pause_Click" />
-                    <Button Content="重置" Click="Reset_Click" />
-                </StackPanel>
+            <StackPanel>
+                <TextBlock x:Name="AppTitle" Text="FocusFlow" FontSize="32" FontWeight="SemiBold" />
+                <TextBlock Text="任务管理 + 番茄钟" Opacity="0.75" />
             </StackPanel>
+
+            <Grid x:Name="InputGrid" Grid.Row="1" ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="8" RowSpacing="8">
+                <TextBox x:Name="TaskInput" Grid.Column="0" Grid.Row="0" MinWidth="260" PlaceholderText="输入任务，例如：完成项目文档" HorizontalAlignment="Stretch" />
+                <Button x:Name="AddTaskButton" Grid.Column="1" Grid.Row="0" Content="添加" Click="AddTask_Click" MinHeight="38" Padding="16,0" />
+            </Grid>
+
+            <Grid x:Name="MainRegionGrid" Grid.Row="2" ColumnDefinitions="2*,*" RowDefinitions="*" ColumnSpacing="14" RowSpacing="14">
+                <Border Grid.Row="0" Grid.Column="0" CornerRadius="12" Padding="8" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                    <ListView x:Name="TaskListView" MinHeight="240">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:TaskItem">
+                                <Border Margin="0,4" Padding="10" CornerRadius="10" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                                    <Grid ColumnSpacing="8" RowSpacing="6" ColumnDefinitions="*,Auto,Auto" RowDefinitions="Auto,Auto">
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Bind Title}" TextWrapping="WrapWholeWords" TextDecorations="{x:Bind Decoration}" VerticalAlignment="Center" MaxLines="3" />
+                                        <Button Grid.Row="1" Grid.Column="1" Content="完成/撤销" Tag="{x:Bind Id}" Click="ToggleTask_Click" MinWidth="92" />
+                                        <Button Grid.Row="1" Grid.Column="2" Content="删除" Tag="{x:Bind Id}" Click="DeleteTask_Click" MinWidth="70" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Border>
+
+                <Border x:Name="TimerPanel" Grid.Column="1" CornerRadius="12" Padding="16" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                    <StackPanel Spacing="12" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                        <TextBlock Text="番茄钟" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="TimerText" Text="25:00" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" />
+                        <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+                            <Button Content="开始" Click="Start_Click" MinWidth="72" />
+                            <Button Content="暂停" Click="Pause_Click" MinWidth="72" />
+                            <Button Content="重置" Click="Reset_Click" MinWidth="72" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </Window>
