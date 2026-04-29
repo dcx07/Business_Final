@@ -29,6 +29,7 @@ public sealed partial class MainWindow : Window
         RenderTimer();
     }
 
+
     private async void AddTask_Click(object sender, RoutedEventArgs e)
     {
         var title = TaskInput.Text.Trim();
