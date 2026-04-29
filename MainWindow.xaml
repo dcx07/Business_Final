@@ -32,7 +32,10 @@
                             <Setter Target="TaskListView.(Grid.Column)" Value="0" />
                             <Setter Target="TimerPanel.(Grid.Row)" Value="1" />
                             <Setter Target="TimerPanel.(Grid.Column)" Value="0" />
-                            <Setter Target="TimerPanel.HorizontalAlignment" Value="Center" />
+                            <Setter Target="TimerPanel.HorizontalAlignment" Value="Stretch" />
+                            <Setter Target="TimerPanel.Width" Value="Auto" />
+                            <Setter Target="TimerPanel.MinWidth" Value="0" />
+                            <Setter Target="TimerPanel.MaxWidth" Value="Infinity" />
                             <Setter Target="TimerText.FontSize" Value="30" />
                             <Setter Target="TimerActions.Orientation" Value="Vertical" />
                             <Setter Target="TimerActions.HorizontalAlignment" Value="Center" />
@@ -61,6 +64,9 @@
                             <Setter Target="TimerPanel.(Grid.Row)" Value="0" />
                             <Setter Target="TimerPanel.(Grid.Column)" Value="1" />
                             <Setter Target="TimerPanel.HorizontalAlignment" Value="Stretch" />
+                            <Setter Target="TimerPanel.Width" Value="320" />
+                            <Setter Target="TimerPanel.MinWidth" Value="320" />
+                            <Setter Target="TimerPanel.MaxWidth" Value="320" />
                             <Setter Target="TimerText.FontSize" Value="38" />
                             <Setter Target="TimerActions.Orientation" Value="Horizontal" />
                             <Setter Target="TimerActions.HorizontalAlignment" Value="Center" />
@@ -89,6 +95,9 @@
                             <Setter Target="TimerPanel.(Grid.Row)" Value="0" />
                             <Setter Target="TimerPanel.(Grid.Column)" Value="1" />
                             <Setter Target="TimerPanel.HorizontalAlignment" Value="Stretch" />
+                            <Setter Target="TimerPanel.Width" Value="320" />
+                            <Setter Target="TimerPanel.MinWidth" Value="320" />
+                            <Setter Target="TimerPanel.MaxWidth" Value="320" />
                             <Setter Target="TimerText.FontSize" Value="50" />
                             <Setter Target="TimerActions.Orientation" Value="Horizontal" />
                             <Setter Target="TimerActions.HorizontalAlignment" Value="Center" />
@@ -124,7 +133,7 @@
                     </ListView>
                 </Border>
 
-                <Border x:Name="TimerPanel" Grid.Row="0" Grid.Column="1" Width="320" MinWidth="320" MaxWidth="320" CornerRadius="8" Padding="16" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                <Border x:Name="TimerPanel" Grid.Row="0" Grid.Column="1" CornerRadius="8" Padding="16" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                     <StackPanel Spacing="12" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                         <TextBlock Text="番茄钟" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Center" />
                         <TextBlock x:Name="TimerText" Text="25:00" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="NoWrap" />
