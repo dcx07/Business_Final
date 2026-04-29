@@ -30,7 +30,9 @@
                             <Setter Target="TaskListView.(Grid.Column)" Value="0" />
                             <Setter Target="TimerPanel.(Grid.Row)" Value="1" />
                             <Setter Target="TimerPanel.(Grid.Column)" Value="0" />
-                            <Setter Target="TimerText.FontSize" Value="42" />
+                            <Setter Target="TimerText.FontSize" Value="34" />
+                            <Setter Target="TimerActions.Orientation" Value="Vertical" />
+                            <Setter Target="TimerActions.HorizontalAlignment" Value="Stretch" />
                         </VisualState.Setters>
                     </VisualState>
 
@@ -55,7 +57,9 @@
                             <Setter Target="TaskListView.(Grid.Column)" Value="0" />
                             <Setter Target="TimerPanel.(Grid.Row)" Value="1" />
                             <Setter Target="TimerPanel.(Grid.Column)" Value="0" />
-                            <Setter Target="TimerText.FontSize" Value="44" />
+                            <Setter Target="TimerText.FontSize" Value="38" />
+                            <Setter Target="TimerActions.Orientation" Value="Horizontal" />
+                            <Setter Target="TimerActions.HorizontalAlignment" Value="Center" />
                         </VisualState.Setters>
                     </VisualState>
 
@@ -81,6 +85,8 @@
                             <Setter Target="TimerPanel.(Grid.Row)" Value="0" />
                             <Setter Target="TimerPanel.(Grid.Column)" Value="1" />
                             <Setter Target="TimerText.FontSize" Value="50" />
+                            <Setter Target="TimerActions.Orientation" Value="Horizontal" />
+                            <Setter Target="TimerActions.HorizontalAlignment" Value="Center" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -92,7 +98,7 @@
             </StackPanel>
 
             <Grid x:Name="InputGrid" Grid.Row="1" ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="8" RowSpacing="8">
-                <TextBox x:Name="TaskInput" Grid.Column="0" Grid.Row="0" MinWidth="260" PlaceholderText="输入任务，例如：完成项目文档" HorizontalAlignment="Stretch" />
+                <TextBox x:Name="TaskInput" Grid.Column="0" Grid.Row="0" MinWidth="0" PlaceholderText="输入任务，例如：完成项目文档" HorizontalAlignment="Stretch" />
                 <Button x:Name="AddTaskButton" Grid.Column="1" Grid.Row="0" Content="添加" Click="AddTask_Click" MinHeight="38" Padding="16,0" />
             </Grid>
 
@@ -104,8 +110,8 @@
                                 <Border Margin="0,4" Padding="10" CornerRadius="10" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
                                     <Grid ColumnSpacing="8" RowSpacing="6" ColumnDefinitions="*,Auto,Auto" RowDefinitions="Auto,Auto">
                                         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Bind Title}" TextWrapping="WrapWholeWords" TextDecorations="{x:Bind Decoration}" VerticalAlignment="Center" MaxLines="3" />
-                                        <Button Grid.Row="1" Grid.Column="1" Content="完成/撤销" Tag="{x:Bind Id}" Click="ToggleTask_Click" MinWidth="92" />
-                                        <Button Grid.Row="1" Grid.Column="2" Content="删除" Tag="{x:Bind Id}" Click="DeleteTask_Click" MinWidth="70" />
+                                        <Button Grid.Row="1" Grid.Column="1" Content="完成/撤销" Tag="{x:Bind Id}" Click="ToggleTask_Click" MinWidth="76" />
+                                        <Button Grid.Row="1" Grid.Column="2" Content="删除" Tag="{x:Bind Id}" Click="DeleteTask_Click" MinWidth="60" />
                                     </Grid>
                                 </Border>
                             </DataTemplate>
@@ -117,10 +123,10 @@
                     <StackPanel Spacing="12" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                         <TextBlock Text="番茄钟" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Center" />
                         <TextBlock x:Name="TimerText" Text="25:00" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" />
-                        <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
-                            <Button Content="开始" Click="Start_Click" MinWidth="72" />
-                            <Button Content="暂停" Click="Pause_Click" MinWidth="72" />
-                            <Button Content="重置" Click="Reset_Click" MinWidth="72" />
+                        <StackPanel x:Name="TimerActions" Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+                            <Button Content="开始" Click="Start_Click" MinWidth="64" />
+                            <Button Content="暂停" Click="Pause_Click" MinWidth="64" />
+                            <Button Content="重置" Click="Reset_Click" MinWidth="64" />
                         </StackPanel>
                     </StackPanel>
                 </Border>
