@@ -13,6 +13,9 @@
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="WindowWidthStates">
                     <VisualState x:Name="Compact">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0" />
+                        </VisualState.StateTriggers>
                         <VisualState.Setters>
                             <Setter Target="RootGrid.Padding" Value="12" />
                             <Setter Target="AppTitle.FontSize" Value="26" />
@@ -97,12 +100,12 @@
                 <TextBlock Text="任务管理 + 番茄钟" Opacity="0.75" />
             </StackPanel>
 
-            <Grid x:Name="InputGrid" Grid.Row="1" ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="8" RowSpacing="8">
+            <Grid x:Name="InputGrid" Grid.Row="1" ColumnDefinitions="*" RowDefinitions="Auto,Auto" ColumnSpacing="8" RowSpacing="8">
                 <TextBox x:Name="TaskInput" Grid.Column="0" Grid.Row="0" MinWidth="0" PlaceholderText="输入任务，例如：完成项目文档" HorizontalAlignment="Stretch" />
-                <Button x:Name="AddTaskButton" Grid.Column="1" Grid.Row="0" Content="添加" Click="AddTask_Click" MinHeight="38" Padding="16,0" />
+                <Button x:Name="AddTaskButton" Grid.Column="0" Grid.Row="1" Content="添加" Click="AddTask_Click" MinHeight="38" Padding="16,0" HorizontalAlignment="Stretch" />
             </Grid>
 
-            <Grid x:Name="MainRegionGrid" Grid.Row="2" ColumnDefinitions="2*,*" RowDefinitions="*" ColumnSpacing="14" RowSpacing="14">
+            <Grid x:Name="MainRegionGrid" Grid.Row="2" ColumnDefinitions="*" RowDefinitions="Auto,Auto" ColumnSpacing="14" RowSpacing="14">
                 <Border Grid.Row="0" Grid.Column="0" CornerRadius="12" Padding="8" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                     <ListView x:Name="TaskListView" MinHeight="240">
                         <ListView.ItemTemplate>
@@ -119,10 +122,10 @@
                     </ListView>
                 </Border>
 
-                <Border x:Name="TimerPanel" Grid.Column="1" CornerRadius="12" Padding="16" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                <Border x:Name="TimerPanel" Grid.Row="1" Grid.Column="0" CornerRadius="12" Padding="16" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                     <StackPanel Spacing="12" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                         <TextBlock Text="番茄钟" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Center" />
-                        <TextBlock x:Name="TimerText" Text="25:00" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="TimerText" Text="25:00" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="NoWrap" />
                         <StackPanel x:Name="TimerActions" Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
                             <Button Content="开始" Click="Start_Click" MinWidth="64" />
                             <Button Content="暂停" Click="Pause_Click" MinWidth="64" />
