@@ -1,21 +1,22 @@
-# FocusFlow
+# FocusFlow（WinUI 3）
 
-一个可直接运行的轻量网页项目：**任务管理 + 番茄钟**。
+这是一个使用 **WinUI 3 + C#** 实现的桌面应用，包含：
 
-## 功能
-
-- 添加、完成、删除任务
-- 自动使用 `localStorage` 持久化任务
+- 任务管理（添加 / 完成或撤销 / 删除）
+- 本地持久化（保存到 `ApplicationData.Current.LocalFolder/tasks.json`）
 - 25 分钟番茄钟（开始 / 暂停 / 重置）
 
-## 运行方式
+## 运行环境
 
-你可以直接双击 `index.html` 打开。
+- Windows 10 1809+ / Windows 11
+- .NET 8 SDK
+- Visual Studio 2022（安装 Windows App SDK / WinUI 工作负载）
 
-或者使用本地静态服务器（推荐）：
+## 运行
 
 ```bash
-python3 -m http.server 8080
+dotnet restore
+dotnet build
 ```
 
-然后访问：<http://localhost:8080>
+建议直接用 Visual Studio 打开 `BusinessFinal.WinUI.csproj` 后运行。
