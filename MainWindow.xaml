@@ -8,6 +8,12 @@
     mc:Ignorable="d"
     Title="FocusFlow WinUI 3">
 
+    <ScrollViewer
+        HorizontalScrollMode="Enabled"
+        HorizontalScrollBarVisibility="Auto"
+        VerticalScrollMode="Disabled"
+        VerticalScrollBarVisibility="Disabled"
+        ZoomMode="Disabled">
     <Grid x:Name="RootGrid" MinWidth="900" Padding="24" RowDefinitions="Auto,Auto,*" RowSpacing="16" HorizontalAlignment="Stretch">
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="WindowWidthStates">
@@ -145,5 +151,5 @@
                     </StackPanel>
                 </Border>
             </Grid>
-        </Grid>
+    </ScrollViewer>
 </Window>
