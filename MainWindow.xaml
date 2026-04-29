@@ -8,8 +8,8 @@
     mc:Ignorable="d"
     Title="FocusFlow WinUI 3">
 
-    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-        <Grid x:Name="RootGrid" Padding="24" RowDefinitions="Auto,Auto,*" RowSpacing="14" HorizontalAlignment="Stretch">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid x:Name="RootGrid" MinWidth="760" Padding="24" RowDefinitions="Auto,Auto,*" RowSpacing="14" HorizontalAlignment="Stretch">
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="WindowWidthStates">
                     <VisualState x:Name="Compact">
@@ -19,23 +19,23 @@
                         <VisualState.Setters>
                             <Setter Target="RootGrid.Padding" Value="12" />
                             <Setter Target="AppTitle.FontSize" Value="26" />
-                            <Setter Target="InputGrid.ColumnDefinitions" Value="*" />
-                            <Setter Target="InputGrid.RowDefinitions" Value="Auto,Auto" />
+                            <Setter Target="InputGrid.ColumnDefinitions" Value="*,Auto" />
+                            <Setter Target="InputGrid.RowDefinitions" Value="Auto" />
                             <Setter Target="TaskInput.(Grid.Row)" Value="0" />
                             <Setter Target="TaskInput.(Grid.Column)" Value="0" />
                             <Setter Target="TaskInput.MinWidth" Value="0" />
-                            <Setter Target="AddTaskButton.(Grid.Row)" Value="1" />
-                            <Setter Target="AddTaskButton.(Grid.Column)" Value="0" />
+                            <Setter Target="AddTaskButton.(Grid.Row)" Value="0" />
+                            <Setter Target="AddTaskButton.(Grid.Column)" Value="1" />
                             <Setter Target="AddTaskButton.HorizontalAlignment" Value="Stretch" />
-                            <Setter Target="MainRegionGrid.ColumnDefinitions" Value="*" />
-                            <Setter Target="MainRegionGrid.RowDefinitions" Value="Auto,Auto" />
+                            <Setter Target="MainRegionGrid.ColumnDefinitions" Value="2*,*" />
+                            <Setter Target="MainRegionGrid.RowDefinitions" Value="*" />
                             <Setter Target="TaskListView.(Grid.Row)" Value="0" />
                             <Setter Target="TaskListView.(Grid.Column)" Value="0" />
-                            <Setter Target="TimerPanel.(Grid.Row)" Value="1" />
-                            <Setter Target="TimerPanel.(Grid.Column)" Value="0" />
+                            <Setter Target="TimerPanel.(Grid.Row)" Value="0" />
+                            <Setter Target="TimerPanel.(Grid.Column)" Value="1" />
                             <Setter Target="TimerText.FontSize" Value="34" />
-                            <Setter Target="TimerActions.Orientation" Value="Vertical" />
-                            <Setter Target="TimerActions.HorizontalAlignment" Value="Stretch" />
+                            <Setter Target="TimerActions.Orientation" Value="Horizontal" />
+                            <Setter Target="TimerActions.HorizontalAlignment" Value="Center" />
                         </VisualState.Setters>
                     </VisualState>
 
@@ -46,20 +46,20 @@
                         <VisualState.Setters>
                             <Setter Target="RootGrid.Padding" Value="18" />
                             <Setter Target="AppTitle.FontSize" Value="30" />
-                            <Setter Target="InputGrid.ColumnDefinitions" Value="*" />
-                            <Setter Target="InputGrid.RowDefinitions" Value="Auto,Auto" />
+                            <Setter Target="InputGrid.ColumnDefinitions" Value="*,Auto" />
+                            <Setter Target="InputGrid.RowDefinitions" Value="Auto" />
                             <Setter Target="TaskInput.(Grid.Row)" Value="0" />
                             <Setter Target="TaskInput.(Grid.Column)" Value="0" />
                             <Setter Target="TaskInput.MinWidth" Value="0" />
-                            <Setter Target="AddTaskButton.(Grid.Row)" Value="1" />
-                            <Setter Target="AddTaskButton.(Grid.Column)" Value="0" />
+                            <Setter Target="AddTaskButton.(Grid.Row)" Value="0" />
+                            <Setter Target="AddTaskButton.(Grid.Column)" Value="1" />
                             <Setter Target="AddTaskButton.HorizontalAlignment" Value="Stretch" />
-                            <Setter Target="MainRegionGrid.ColumnDefinitions" Value="*" />
-                            <Setter Target="MainRegionGrid.RowDefinitions" Value="*,Auto" />
+                            <Setter Target="MainRegionGrid.ColumnDefinitions" Value="2*,*" />
+                            <Setter Target="MainRegionGrid.RowDefinitions" Value="*" />
                             <Setter Target="TaskListView.(Grid.Row)" Value="0" />
                             <Setter Target="TaskListView.(Grid.Column)" Value="0" />
-                            <Setter Target="TimerPanel.(Grid.Row)" Value="1" />
-                            <Setter Target="TimerPanel.(Grid.Column)" Value="0" />
+                            <Setter Target="TimerPanel.(Grid.Row)" Value="0" />
+                            <Setter Target="TimerPanel.(Grid.Column)" Value="1" />
                             <Setter Target="TimerText.FontSize" Value="38" />
                             <Setter Target="TimerActions.Orientation" Value="Horizontal" />
                             <Setter Target="TimerActions.HorizontalAlignment" Value="Center" />
@@ -73,13 +73,13 @@
                         <VisualState.Setters>
                             <Setter Target="RootGrid.Padding" Value="24" />
                             <Setter Target="AppTitle.FontSize" Value="32" />
-                            <Setter Target="InputGrid.ColumnDefinitions" Value="*" />
-                            <Setter Target="InputGrid.RowDefinitions" Value="Auto,Auto" />
+                            <Setter Target="InputGrid.ColumnDefinitions" Value="*,Auto" />
+                            <Setter Target="InputGrid.RowDefinitions" Value="Auto" />
                             <Setter Target="TaskInput.(Grid.Row)" Value="0" />
                             <Setter Target="TaskInput.(Grid.Column)" Value="0" />
                             <Setter Target="TaskInput.MinWidth" Value="260" />
-                            <Setter Target="AddTaskButton.(Grid.Row)" Value="1" />
-                            <Setter Target="AddTaskButton.(Grid.Column)" Value="0" />
+                            <Setter Target="AddTaskButton.(Grid.Row)" Value="0" />
+                            <Setter Target="AddTaskButton.(Grid.Column)" Value="1" />
                             <Setter Target="AddTaskButton.HorizontalAlignment" Value="Stretch" />
                             <Setter Target="MainRegionGrid.ColumnDefinitions" Value="2*,*" />
                             <Setter Target="MainRegionGrid.RowDefinitions" Value="*" />
@@ -100,12 +100,12 @@
                 <TextBlock Text="任务管理 + 番茄钟" Opacity="0.75" />
             </StackPanel>
 
-            <Grid x:Name="InputGrid" Grid.Row="1" ColumnDefinitions="*" RowDefinitions="Auto,Auto" ColumnSpacing="8" RowSpacing="8">
+            <Grid x:Name="InputGrid" Grid.Row="1" ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="8" RowSpacing="8">
                 <TextBox x:Name="TaskInput" Grid.Column="0" Grid.Row="0" MinWidth="0" PlaceholderText="输入任务，例如：完成项目文档" HorizontalAlignment="Stretch" />
-                <Button x:Name="AddTaskButton" Grid.Column="0" Grid.Row="1" Content="添加" Click="AddTask_Click" MinHeight="38" Padding="16,0" HorizontalAlignment="Stretch" />
+                <Button x:Name="AddTaskButton" Grid.Column="1" Grid.Row="0" Content="添加" Click="AddTask_Click" MinHeight="38" Padding="16,0" HorizontalAlignment="Stretch" />
             </Grid>
 
-            <Grid x:Name="MainRegionGrid" Grid.Row="2" ColumnDefinitions="*" RowDefinitions="Auto,Auto" ColumnSpacing="14" RowSpacing="14">
+            <Grid x:Name="MainRegionGrid" Grid.Row="2" ColumnDefinitions="2*,*" RowDefinitions="*" ColumnSpacing="14" RowSpacing="14">
                 <Border Grid.Row="0" Grid.Column="0" CornerRadius="12" Padding="8" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                     <ListView x:Name="TaskListView" MinHeight="240">
                         <ListView.ItemTemplate>
@@ -122,7 +122,7 @@
                     </ListView>
                 </Border>
 
-                <Border x:Name="TimerPanel" Grid.Row="1" Grid.Column="0" CornerRadius="12" Padding="16" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                <Border x:Name="TimerPanel" Grid.Row="0" Grid.Column="1" CornerRadius="12" Padding="16" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                     <StackPanel Spacing="12" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                         <TextBlock Text="番茄钟" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Center" />
                         <TextBlock x:Name="TimerText" Text="25:00" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="NoWrap" />
