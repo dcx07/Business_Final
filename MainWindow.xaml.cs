@@ -19,6 +19,7 @@ public sealed partial class MainWindow : Window
 
     private readonly DispatcherTimer _timer = new() { Interval = TimeSpan.FromSeconds(1) };
     private int _remainingSeconds = WorkSeconds;
+    private bool _isEnforcingMinSize;
 
     public ObservableCollection<TaskItem> Tasks { get; } = [];
 
@@ -36,12 +37,27 @@ public sealed partial class MainWindow : Window
 
     private void MainWindow_SizeChanged(object sender, WindowSizeChangedEventArgs args)
     {
+        if (_isEnforcingMinSize)
+        {
+            return;
+        }
+
         var width = (int)args.Size.Width;
         var height = (int)args.Size.Height;
 
-        if (width < MinWindowWidth || height < MinWindowHeight)
+        if (width >= MinWindowWidth && height >= MinWindowHeight)
+        {
+            return;
+        }
+
+        _isEnforcingMinSize = true;
+        try
         {
             AppWindow.Resize(new SizeInt32(Math.Max(width, MinWindowWidth), Math.Max(height, MinWindowHeight)));
+        }
+        finally
+        {
+            _isEnforcingMinSize = false;
         }
     }
 
