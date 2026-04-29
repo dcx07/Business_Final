@@ -3,7 +3,7 @@
 这是一个使用 **WinUI 3 + C#** 实现的桌面应用，包含：
 
 - 任务管理（添加 / 完成或撤销 / 删除）
-- 本地持久化（保存到 `ApplicationData.Current.LocalFolder/tasks.json`）
+- 本地持久化（保存到 `%LocalAppData%\BusinessFinal\tasks.json`）
 - 25 分钟番茄钟（开始 / 暂停 / 重置）
 
 ## 运行环境
