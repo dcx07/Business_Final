@@ -8,18 +8,54 @@
     mc:Ignorable="d"
     Title="FocusFlow WinUI 3">
 
-    <Grid Padding="24" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="12">
+    <Grid x:Name="RootGrid" Padding="24" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="12">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowWidthStates">
+                <VisualState x:Name="Narrow">
+                    <VisualState.Setters>
+                        <Setter Target="InputGrid.ColumnDefinitions" Value="*" />
+                        <Setter Target="InputGrid.RowDefinitions" Value="Auto,Auto" />
+                        <Setter Target="TaskInput.(Grid.Row)" Value="0" />
+                        <Setter Target="TaskInput.(Grid.Column)" Value="0" />
+                        <Setter Target="AddTaskButton.(Grid.Row)" Value="1" />
+                        <Setter Target="AddTaskButton.(Grid.Column)" Value="0" />
+                        <Setter Target="MainRegionGrid.ColumnDefinitions" Value="*" />
+                        <Setter Target="MainRegionGrid.RowDefinitions" Value="*,Auto" />
+                        <Setter Target="TimerPanel.(Grid.Row)" Value="1" />
+                        <Setter Target="TimerPanel.(Grid.Column)" Value="0" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="InputGrid.ColumnDefinitions" Value="*,Auto" />
+                        <Setter Target="InputGrid.RowDefinitions" Value="Auto" />
+                        <Setter Target="TaskInput.(Grid.Row)" Value="0" />
+                        <Setter Target="TaskInput.(Grid.Column)" Value="0" />
+                        <Setter Target="AddTaskButton.(Grid.Row)" Value="0" />
+                        <Setter Target="AddTaskButton.(Grid.Column)" Value="1" />
+                        <Setter Target="MainRegionGrid.ColumnDefinitions" Value="2*,*" />
+                        <Setter Target="MainRegionGrid.RowDefinitions" Value="*" />
+                        <Setter Target="TimerPanel.(Grid.Row)" Value="0" />
+                        <Setter Target="TimerPanel.(Grid.Column)" Value="1" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <StackPanel>
             <TextBlock Text="FocusFlow" FontSize="32" FontWeight="SemiBold" />
             <TextBlock Text="任务管理 + 番茄钟" Opacity="0.75" />
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="8">
-            <TextBox x:Name="TaskInput" Width="420" PlaceholderText="输入任务，例如：完成项目文档" />
-            <Button Content="添加" Click="AddTask_Click" />
-        </StackPanel>
+        <Grid x:Name="InputGrid" Grid.Row="1" ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="8" RowSpacing="8">
+            <TextBox x:Name="TaskInput" Grid.Column="0" Grid.Row="0" MinWidth="220" PlaceholderText="输入任务，例如：完成项目文档" HorizontalAlignment="Stretch" />
+            <Button x:Name="AddTaskButton" Grid.Column="1" Grid.Row="0" Content="添加" Click="AddTask_Click" />
+        </Grid>
 
-        <Grid Grid.Row="2" ColumnDefinitions="2*,*" ColumnSpacing="12">
+        <Grid x:Name="MainRegionGrid" Grid.Row="2" ColumnDefinitions="2*,*" RowDefinitions="*" ColumnSpacing="12" RowSpacing="12">
             <ListView x:Name="TaskListView">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:TaskItem">
@@ -32,7 +68,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <StackPanel Grid.Column="1" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel x:Name="TimerPanel" Grid.Column="1" Spacing="10" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <TextBlock Text="番茄钟" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Center" />
                 <TextBlock x:Name="TimerText" Text="25:00" FontSize="48" FontWeight="Bold" HorizontalAlignment="Center" />
                 <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
